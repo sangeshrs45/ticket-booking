@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ATM</title>
+  <style>
+    .main {
+      height: 500px;
+      width: 400px;
+      text-align: center;
+      background-color: gray;
+      margin: 0 auto;
+    }
+
+    input, button {
+      margin-top: 20px;
+      padding: 10px;
+    }
+
+    body {
+      background-color: darkgreen;
+      font-family: sans-serif;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="main">
+    <h2>Welcome to UCO Bank ATM</h2>
+    <button onclick="btn()">Login</button>
+    <button onclick="btn1()">Deposit</button>
+    <button onclick="btn2()">Withdraw</button>
+    <button onclick="btn3()">Check Balance</button>
+    <button onclick="btn4()">Exit</button>
+
+    <h3 id="result"></h3>
+    <h3 id="result2"></h3>
+    <h3 id="result3"></h3>
+  </div>
+
+  <script>
+    const username = 'sangesh';
+    const pin = '4555';
+    let balance = 0;
+    let isLoggedIn = false;
+
+    const result = document.getElementById('result');
+    const result2 = document.getElementById('result2');
+    const result3 = document.getElementById('result3');
+
+    // Login inputs
+    let input1 = document.createElement('input');
+    input1.type = 'text';
+    input1.placeholder = "Enter username";
+    input1.id = 'input1';
+    input1.style.display = 'none';
+    document.querySelector('.main').appendChild(input1);
+
+    let input2 = document.createElement('input');
+    input2.type = 'password';
+    input2.placeholder = "Enter PIN";
+    input2.id = 'input2';
+    input2.style.display = 'none';
+    document.querySelector('.main').appendChild(input2);
+
+    let loginButton = document.createElement('button');
+    loginButton.id = 'loginButton';
+    loginButton.innerHTML = 'Submit';
+    loginButton.style.display = 'none';
+    document.querySelector('.main').appendChild(loginButton);
+
+    function btn() {
+      input1.style.display = 'block';
+      input2.style.display = 'block';
+      loginButton.style.display = 'block';
+
+      loginButton.onclick = function () {
+        const enteredUsername = input1.value.trim();
+        const enteredPin = input2.value.trim();
+
+        if (enteredUsername === username && enteredPin === pin) {
+          result.innerHTML = '✅ Login verified';
+          input1.style.display = 'none';
+          input2.style.display = 'none';
+          loginButton.style.display = 'none';
+          isLoggedIn = true;
+        } else {
+          result.innerHTML = '❌ Incorrect credentials. Please try again.';
+        }
+      };
+    }
+
+    // Deposit input and button
+    let input3 = document.createElement('input');
+    input3.type = 'number';
+    input3.id = 'input3';
+    input3.placeholder = 'Enter deposit amount';
+    input3.style.display = 'none';
+    document.querySelector('.main').appendChild(input3);
+
+    let depositButton = document.createElement('button');
+    depositButton.id = 'depositButton';
+    depositButton.innerHTML = 'Confirm Deposit';
+    depositButton.style.display = 'none';
+    document.querySelector('.main').appendChild(depositButton);
+
+    function btn1() {
+      if (isLoggedIn) {
+        input3.style.display = 'block';
+        depositButton.style.display = 'block';
+      } else {
+        result2.innerHTML = '⚠️ Please login first!';
+      }
+    }
+  </script>
+</body>
+
+</html>

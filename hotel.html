@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Menu - Order System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        .menu, .cart {
+            margin-bottom: 30px;
+        }
+        .menu-item, .cart-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        .cart-item {
+            background-color: #f8f8f8;
+        }
+        .total {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .button {
+            padding: 8px 16px;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+        .clear-btn {
+            background-color: #dc3545;
+        }
+        .clear-btn:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Hotel Menu</h1>
+
+        <!-- Menu Section -->
+        <div class="menu">
+            <h2>Menu</h2>
+            <div class="menu-item">
+                <span>Pizza</span>
+                <span>$10</span>
+                <button class="button" onclick="addToCart('Pizza', 10)">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <span>Burger</span>
+                <span>$5</span>
+                <button class="button" onclick="addToCart('Burger', 5)">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <span>Pasta</span>
+                <span>$8</span>
+                <button class="button" onclick="addToCart('Pasta', 8)">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <span>Salad</span>
+                <span>$4</span>
+                <button class="button" onclick="addToCart('Salad', 4)">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <span>Steak</span>
+                <span>$15</span>
+                <button class="button" onclick="addToCart('Steak', 15)">Add to Cart</button>
+            </div>
+        </div>
+
+        <!-- Cart Section -->
+        <div class="cart">
+            <h2>Your Cart</h2>
+            <div id="cartItems"></div>
+            <div class="total">Total: $<span id="totalPrice">0</span></div>
+            <button class="button" onclick="generateOTP()">Generate OTP</button>
+            <p id="otpMessage"></p>
+            <button class="button clear-btn" onclick="clearCart()">Clear Cart</button>
+            <button class="button" onclick="confirmPayment()">Confirm Payment</button>
+        </div>
+    </div>
+
+    <script>
+        let cart = [];
+        let totalPrice = 0;
+        let generatedOTP;
+
+        // Add item to cart
+        function addToCart(itemName, price) {
+            const itemIndex = cart.findIndex(item => item.itemName === itemName);
+            if (itemIndex === -1) {
+                cart.push({ itemName, price, quantity: 1 });
+            } else {
+                cart[itemIndex].quantity++;
+            }
+            totalPrice += price;
+            updateCartUI();
+        }
+
+        // Update cart UI
+        function updateCartUI() {
+            const cartItemsDiv = document.getElementById("cartItems");
+            cartItemsDiv.innerHTML = "";
+            cart.forEach(item => {
+                cartItemsDiv.innerHTML += `
+                    <div class="cart-item">
+                        <span>${item.itemName} (x${item.quantity})</span>
+                        <span>$${item.price * item.quantity}</span>
+                    </div>
+                `;
+            });
+            document.getElementById("totalPrice").innerText = totalPrice;
+        }
+
+        // Generate OTP
+        function generateOTP() {
+            generatedOTP = Math.floor(100000 + Math.random() * 900000);
+            document.getElementById("otpMessage").innerText = `Your OTP is: ${generatedOTP}`;
+        }
+
+        // Confirm payment
+        function confirmPayment() {
+            const otpInput = prompt("Enter OTP to confirm payment:");
+            if (parseInt(otpInput) === generatedOTP) {
+                alert("Payment confirmed! Thank you for your order.");
+                clearCart(); // Clear cart after successful payment
+            } else {
+                alert("Invalid OTP! Please try again.");
+            }
+        }
+
+        // Clear cart
+        function clearCart() {
+            cart = [];
+            totalPrice = 0;
+            updateCartUI();
+            document.getElementById("otpMessage").innerText = "";
+        }
+    </script>
+
+</body>
+</html>

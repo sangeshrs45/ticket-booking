@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+        <h1 id="name">sangeshwaran</h1>
+        <button onclick="abc()">submit</button>
+        <script>
+              let name = document.getElementById('name')
+           function abc(){
+          
+                name.textContent="hello sangeshwaran"
+
+           }
+            
+           let num = 153;
+           let temp = num;
+           let sum = 0;
+           let numDigits = num.toString().length;
+
+while (temp > 0) {
+    let lastDigit = temp % 10;
+    sum += Math.pow(lastDigit, numDigits);
+    temp = Math.floor(temp / 10);
+}
+
+if (sum === num) {
+    console.log("Armstrong number");
+} else {
+    console.log("Not an Armstrong number");
+}
+
+        </script>
+</body>
+</html>

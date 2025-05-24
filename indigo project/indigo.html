@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Scrolling Navbar Text</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .navbar {
+      background-color: #120feb;
+      color: white;
+      padding: 25px ;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .marquee {
+      display: inline-block;
+      white-space: nowrap;
+      position: absolute;
+      will-change: transform;
+      animation: scrollText 20s linear infinite;
+    }
+
+    @keyframes scrollText {
+      0% {
+        transform: translateX(100%);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <div class="marquee">
+      6E Rewards and IndiGo BluChip Accounts are managed separately. To use Voucher, Credit Shell & 6E Rewards, Click Here.
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,175 @@
+
+   body {
+  font-family: 'Source Sans Pro', sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+/* Marquee Section */
+.navbar-marquee {
+  background-color: #002B5C;
+  color: white;
+  overflow: hidden;
+  position: relative;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.marquee {
+  white-space: nowrap;
+  display: inline-block;
+  animation: scrollLeft 20s linear infinite;
+}
+
+/*------------------------------------------ hoverging----------------------- */
+/* Hover effect on info boxes */
+.info-box,
+.promo-box {
+  transition: margin-top 0.3s ease, transform 0.3s ease;
+}
+
+
+.info-box:hover,
+.promo-box:hover {
+  margin-top: 10px;
+  transform: scale(1.02);
+}
+
+@keyframes scrollLeft {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+       /*------------------------------- web icons-------------------- */
+.social-icons {
+  display: flex;
+  gap: 25px;
+  margin-top: 10px;
+  margin-left: 80px;
+
+}
+
+.social-icons a {
+  font-size: 40px;
+  color:white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #0056b3; /* Indigo Blue or accent */
+}
+
+/* Highlighted text */
+.highlight {
+  color:  #2807e6;
+  font-weight: 700;
+}
+
+/* Heading */
+.heading {
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+  margin: 30px 10px;
+}
+
+/* Info Boxes */
+.info-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+  padding: 0 10px;
+}
+
+.info-box {
+  flex: 1 1 180px;
+  padding: 20px;
+  text-align: center;
+  color: white;
+  background: #007bff;
+  border-radius: 8px;
+}
+
+.info-box.large {
+  background: #0052A4;
+}
+
+.info-box.bg-light {
+  color: #333;
+  background: #f8f9fa;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.subtitle {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+/* Promo Boxes */
+.promo-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px 10px;
+  gap: 10px;
+}
+
+.promo-box {
+  flex: 1 1 300px;
+  background: #e6f0fa;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+/* Footer */
+.footer {
+  background-color: #2807e6;
+  padding: 40px 20px;
+  color: white;
+  font-size: 14px;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.footer-column {
+  flex: 1 1 200px;
+}
+
+.footer-column h3 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-column li {
+  margin-bottom: 5px;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 20px;
+}
